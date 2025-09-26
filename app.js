@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+   var modalBtn = document.querySelector(".test-button");
+    var modalContent = document.querySelector('.custom-modal-content');
+    var closeBtn = document.querySelector(".custom-close");
+
+    modalBtn.addEventListener("click", function(){
+        modalContent.classList.remove('hidden');
+    });
+    closeBtn.addEventListener("click",function(){
+      modalContent.classList.add('hidden');
+    });
   console.log("Hello");
   const h1TextDesign = document.querySelector("#h1_text");
   const LightDarkBtn = document.querySelector("#button");
@@ -51,9 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
       viewDetailBtn.forEach((btn) => {
         btn.addEventListener('click', () => {
           console.log(btn.closest(".product-root").querySelector(".product-id").getAttribute("data-id"));
+
+          const modal = document.querySelector('.modal-content');
+          const modalContainer = document.querySelector('.modal');
+           modal.classList.remove('hidden');
+          modal.innerHTML = `<span class="close">&times;</span>
+          <p> Show Data </p>`;
+          modalContainer.appendChild(modal);
+          console.log(modalContainer.appendChild(modal));
+         
         });
       });
     });
-
-
 });
